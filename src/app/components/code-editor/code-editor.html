@@ -1,0 +1,50 @@
+<div class="editor-container">
+  <div class="editor-toolbar">
+    <div class="toolbar-left">
+      <button class="btn btn-optimize" (click)="onOptimize()" title="Optimize SVG">
+        <span class="btn-icon">⚡</span> Optimize
+      </button>
+      <button class="btn btn-prettify" (click)="onPrettify()" title="Prettify SVG">
+        <span class="btn-icon">✨</span> Prettify
+      </button>
+      @if (showSavings()) {
+        <span class="savings-badge">-{{ lastSavings() }}%</span>
+      }
+    </div>
+    <div class="toolbar-right">
+      <span class="status-text">Line {{ lineCount() }} · {{ charCount() }}B</span>
+      <button class="btn btn-clear" (click)="onClear()" title="Clear editor">Clear</button>
+    </div>
+  </div>
+
+  <div class="editor-body">
+    <div class="line-numbers" aria-hidden="true">
+      @for (line of lines(); track line) {
+        <span>{{ line }}</span>
+      }
+    </div>
+    <textarea
+      class="code-textarea"
+      [ngModel]="code()"
+      (ngModelChange)="onCodeChange($event)"
+      spellcheck="false"
+      autocomplete="off"
+      autocorrect="off"
+      autocapitalize="off"
+      placeholder="Paste SVG code here or upload a file..."
+      aria-label="SVG code editor"
+    ></textarea>
+  </div>
+
+  <div class="editor-footer">
+    <label class="upload-btn" tabindex="0" role="button" aria-label="Upload SVG file">
+      <span class="btn-icon">📁</span> Upload
+      <input
+        type="file"
+        accept=".svg,image/svg+xml"
+        (change)="onFileUpload($event)"
+        class="visually-hidden"
+      />
+    </label>
+  </div>
+</div>

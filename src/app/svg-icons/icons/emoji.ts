@@ -1,0 +1,11 @@
+export const SVG_SMILEY = `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="#F1C40F"/><circle cx="35" cy="40" r="5" fill="#2C3E50"/><circle cx="65" cy="40" r="5" fill="#2C3E50"/><path d="M30 60a25 25 0 0 0 40 0" fill="none" stroke="#2C3E50" stroke-width="3" stroke-linecap="round"/></svg>`;
+
+export const SVG_THUMBSUP = `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M45 85H20V45h10l15-30c5 0 10 5 10 15v10h20c5 0 9 4 8 9l-5 30c-1 4-4 6-8 6H45z" fill="#3498DB" stroke="#2980B9" stroke-width="2"/><rect x="15" y="45" width="15" height="40" rx="3" fill="#2980B9"/></svg>`;
+
+export const SVG_FIRE = `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M50 10C40 30 20 40 20 60a30 30 0 0 0 60 0c0-20-20-30-30-50z" fill="#E74C3C"/><path d="M50 40c-5 10-15 15-15 25a15 15 0 0 0 30 0c0-10-10-15-15-25z" fill="#F39C12"/><path d="M50 60c-3 5-8 8-8 13a8 8 0 0 0 16 0c0-5-5-8-8-13z" fill="#F1C40F"/></svg>`;
+
+export const SVG_ROCKET = `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M50 10c-10 15-15 30-15 50h30c0-20-5-35-15-50z" fill="#BDC3C7" stroke="#95A5A6" stroke-width="2"/><path d="M35 60l-10 20h10z" fill="#E74C3C"/><path d="M65 60l10 20h-10z" fill="#E74C3C"/><circle cx="50" cy="40" r="6" fill="#3498DB"/><path d="M40 75l10 15 10-15z" fill="#F39C12"/></svg>`;
+
+export const SVG_TROPHY = `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M30 15h40v30c0 15-10 25-20 25S30 60 30 45z" fill="#F1C40F" stroke="#F39C12" stroke-width="2"/><path d="M30 25H15c0 15 10 20 15 20z" fill="#F39C12"/><path d="M70 25h15c0 15-10 20-15 20z" fill="#F39C12"/><rect x="45" y="70" width="10" height="10" fill="#F39C12"/><rect x="35" y="80" width="30" height="8" rx="3" fill="#F39C12"/></svg>`;
+
+export const SVG_CROWN = `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><polygon points="10,70 20,25 35,50 50,15 65,50 80,25 90,70" fill="#F1C40F" stroke="#F39C12" stroke-width="2"/><rect x="10" y="70" width="80" height="15" rx="3" fill="#F39C12"/><circle cx="50" cy="30" r="4" fill="#E74C3C"/><circle cx="20" cy="38" r="3" fill="#E74C3C"/><circle cx="80" cy="38" r="3" fill="#E74C3C"/></svg>`;

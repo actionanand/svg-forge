@@ -1,0 +1,197 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.editor-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #1e1e2e;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #313244;
+}
+
+.editor-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: #181825;
+  border-bottom: 1px solid #313244;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.toolbar-left,
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+
+  &:focus-visible {
+    outline: 2px solid #89b4fa;
+    outline-offset: 2px;
+  }
+}
+
+.btn-optimize {
+  background: #89b4fa;
+  color: #1e1e2e;
+
+  &:hover {
+    background: #74c7ec;
+  }
+}
+
+.btn-prettify {
+  background: #a6e3a1;
+  color: #1e1e2e;
+
+  &:hover {
+    background: #94e2d5;
+  }
+}
+
+.btn-clear {
+  background: #45475a;
+  color: #cdd6f4;
+
+  &:hover {
+    background: #585b70;
+  }
+}
+
+.btn-icon {
+  font-size: 14px;
+}
+
+.savings-badge {
+  padding: 3px 8px;
+  background: #a6e3a1;
+  color: #1e1e2e;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.status-text {
+  font-size: 12px;
+  color: #6c7086;
+}
+
+.editor-body {
+  display: flex;
+  flex: 1;
+  overflow: auto;
+  min-height: 0;
+}
+
+.line-numbers {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0;
+  min-width: 40px;
+  text-align: right;
+  background: #181825;
+  color: #45475a;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  user-select: none;
+  border-right: 1px solid #313244;
+
+  span {
+    padding: 0 8px;
+  }
+}
+
+.code-textarea {
+  flex: 1;
+  padding: 12px;
+  background: transparent;
+  color: #cdd6f4;
+  border: none;
+  resize: none;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  tab-size: 2;
+  outline: none;
+  min-height: 200px;
+  white-space: pre;
+  overflow-wrap: normal;
+  overflow-x: auto;
+
+  &::placeholder {
+    color: #45475a;
+  }
+}
+
+.editor-footer {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  background: #181825;
+  border-top: 1px solid #313244;
+}
+
+.upload-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: #45475a;
+  color: #cdd6f4;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.15s;
+
+  &:hover {
+    background: #585b70;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #89b4fa;
+    outline-offset: 2px;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

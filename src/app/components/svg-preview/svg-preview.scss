@@ -1,0 +1,157 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.preview-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #1e1e2e;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #313244;
+}
+
+.preview-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: #181825;
+  border-bottom: 1px solid #313244;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.preview-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #cdd6f4;
+}
+
+.zoom-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.btn-zoom {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #313244;
+  color: #cdd6f4;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.15s;
+
+  &:hover:not(:disabled) {
+    background: #45475a;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #89b4fa;
+    outline-offset: 2px;
+  }
+}
+
+.zoom-value {
+  font-size: 12px;
+  color: #a6adc8;
+  min-width: 40px;
+  text-align: center;
+}
+
+.bg-toggles {
+  display: flex;
+  gap: 4px;
+}
+
+.bg-btn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #313244;
+  color: #a6adc8;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.15s;
+
+  &:hover {
+    background: #45475a;
+  }
+
+  &.active {
+    background: #89b4fa;
+    color: #1e1e2e;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #89b4fa;
+    outline-offset: 2px;
+  }
+}
+
+.preview-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  min-height: 200px;
+  padding: 20px;
+}
+
+.bg-checkerboard {
+  background-image:
+    linear-gradient(45deg, #313244 25%, transparent 25%),
+    linear-gradient(-45deg, #313244 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #313244 75%),
+    linear-gradient(-45deg, transparent 75%, #313244 75%);
+  background-size: 20px 20px;
+  background-position:
+    0 0,
+    0 10px,
+    10px -10px,
+    -10px 0;
+  background-color: #1e1e2e;
+}
+
+.bg-white {
+  background: #ffffff;
+}
+
+.bg-dark {
+  background: #11111b;
+}
+
+.svg-wrapper {
+  transition: transform 0.15s ease;
+  transform-origin: center;
+
+  ::ng-deep svg {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+  }
+}
+
+.placeholder {
+  color: #45475a;
+  font-size: 14px;
+  text-align: center;
+}

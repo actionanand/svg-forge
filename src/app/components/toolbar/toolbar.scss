@@ -1,0 +1,81 @@
+:host {
+  display: block;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: #181825;
+  border-bottom: 1px solid #313244;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.toolbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-icon {
+  font-size: 22px;
+}
+
+.brand-name {
+  font-size: 20px;
+  font-weight: 800;
+  color: #cdd6f4;
+  letter-spacing: -0.5px;
+}
+
+.toolbar-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.toolbar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: #313244;
+  color: #cdd6f4;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+
+  &:hover {
+    background: #45475a;
+    transform: translateY(-1px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid #89b4fa;
+    outline-offset: 2px;
+  }
+}
+
+.btn-primary {
+  background: #89b4fa;
+  color: #1e1e2e;
+
+  &:hover {
+    background: #74c7ec;
+  }
+}
+
+.btn-icon {
+  font-size: 15px;
+}
+
+@media (max-width: 600px) {
+  .btn-text {
+    display: none;
+  }
+}
