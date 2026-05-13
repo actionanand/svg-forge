@@ -1,0 +1,114 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.gallery-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #1e1e2e;
+  overflow: hidden;
+}
+
+.gallery-header {
+  padding: 16px 16px 8px;
+
+  h3 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: #cdd6f4;
+  }
+}
+
+.search-box {
+  padding: 4px 12px 12px;
+
+  input {
+    width: 100%;
+    padding: 8px 12px;
+    background: #313244;
+    color: #cdd6f4;
+    border: 1px solid #45475a;
+    border-radius: 8px;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.15s;
+    box-sizing: border-box;
+
+    &:focus {
+      border-color: #89b4fa;
+    }
+
+    &::placeholder {
+      color: #6c7086;
+    }
+  }
+}
+
+.gallery-grid {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 12px 12px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  align-content: start;
+}
+
+.icon-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 8px;
+  background: #181825;
+  border: 1px solid #313244;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+
+  &:hover {
+    background: #313244;
+    border-color: #89b4fa;
+    transform: translateY(-1px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid #89b4fa;
+    outline-offset: 2px;
+  }
+}
+
+.icon-preview {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  ::ng-deep svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.icon-name {
+  font-size: 11px;
+  color: #a6adc8;
+  text-transform: capitalize;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #6c7086;
+  font-size: 13px;
+  padding: 20px;
+}

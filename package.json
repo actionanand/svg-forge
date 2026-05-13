@@ -11,6 +11,7 @@
     "copy-error-page": "cp dist/svg-forge/browser/index.html dist/svg-forge/browser/404.html",
     "test": "ng test",
     "precommit": "run-s format:fix lint",
+    "precommit:dummy": "echo 'This is a dummy print message!'",
     "format:fix": "pretty-quick --staged",
     "format:check": "prettier --config ./.prettierrc --list-different \"src/{app,environments,assets}/**/*{.ts,.js,.json,.css,.scss}\"",
     "format:all": "prettier --config ./.prettierrc --write \"src/{app,environments,assets}/**/*{.ts,.js,.json,.css,.scss}\"",

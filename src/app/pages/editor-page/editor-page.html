@@ -1,0 +1,58 @@
+<div class="editor-layout">
+  <app-toolbar />
+
+  <div class="main-content">
+    <!-- Gallery sidebar toggle -->
+    <button
+      class="sidebar-toggle left-toggle"
+      (click)="toggleGallery()"
+      [attr.aria-expanded]="showGallery()"
+      aria-label="Toggle SVG gallery"
+      [title]="showGallery() ? 'Hide gallery' : 'Show gallery'"
+    >
+      {{ showGallery() ? '◀' : '▶' }}
+    </button>
+
+    <!-- Gallery sidebar -->
+    @if (showGallery()) {
+      <aside class="sidebar gallery-sidebar" aria-label="SVG Gallery">
+        <app-svg-gallery />
+      </aside>
+    }
+
+    <!-- Center panels -->
+    <div class="center-area">
+      <div class="top-row">
+        <div class="editor-pane">
+          <app-code-editor />
+        </div>
+        <div class="preview-pane">
+          <app-svg-preview />
+        </div>
+      </div>
+      <div class="bottom-row" [class.collapsed]="outputCollapsed()">
+        <app-output-panel [isCollapsed]="outputCollapsed()" (toggleCollapse)="toggleOutput()" />
+      </div>
+    </div>
+
+    <!-- Settings toggle -->
+    <button
+      class="sidebar-toggle right-toggle"
+      (click)="toggleSettings()"
+      [attr.aria-expanded]="showSettings()"
+      aria-label="Toggle optimization settings"
+      [title]="showSettings() ? 'Hide settings' : 'Show settings'"
+    >
+      ⚙
+    </button>
+
+    <!-- Settings sidebar -->
+    @if (showSettings()) {
+      <aside class="sidebar settings-sidebar" aria-label="Optimization settings">
+        <app-settings-panel />
+      </aside>
+    }
+  </div>
+</div>
+
+<app-snackbar />
