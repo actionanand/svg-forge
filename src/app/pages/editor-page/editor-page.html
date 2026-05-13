@@ -30,8 +30,8 @@
           <app-svg-preview />
         </div>
       </div>
-      <div class="bottom-row">
-        <app-output-panel />
+      <div class="bottom-row" [class.collapsed]="outputCollapsed()">
+        <app-output-panel [isCollapsed]="outputCollapsed()" (toggleCollapse)="toggleOutput()" />
       </div>
     </div>
 
@@ -54,3 +54,5 @@
     }
   </div>
 </div>
+
+<app-snackbar />

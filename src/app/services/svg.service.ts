@@ -192,7 +192,7 @@ export class SvgService {
   }
 
   generateReactCode(svg: string): string {
-    let jsx = svg
+    const jsx = svg
       .replace(/class=/g, 'className=')
       .replace(/clip-path=/g, 'clipPath=')
       .replace(/fill-rule=/g, 'fillRule=')

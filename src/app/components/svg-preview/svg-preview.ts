@@ -61,11 +61,7 @@ import { SvgService } from '../../services/svg.service';
       </div>
       <div class="preview-area" [class]="'bg-' + bg()">
         @if (safeSvg()) {
-          <div
-            class="svg-wrapper"
-            [style.transform]="'scale(' + zoom() / 100 + ')'"
-            [innerHTML]="safeSvg()"
-          ></div>
+          <div class="svg-wrapper" [style.zoom]="zoom() / 100" [innerHTML]="safeSvg()"></div>
         } @else {
           <div class="placeholder">
             <span>Paste or upload SVG code to preview</span>

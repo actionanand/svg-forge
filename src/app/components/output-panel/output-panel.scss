@@ -25,6 +25,18 @@
   }
 }
 
+.collapse-btn {
+  margin-left: auto;
+  padding: 10px 14px;
+  font-size: 11px;
+  color: #6c7086;
+
+  &:hover {
+    color: #cdd6f4;
+    background: #1e1e2e;
+  }
+}
+
 .tab-btn {
   padding: 10px 16px;
   background: transparent;

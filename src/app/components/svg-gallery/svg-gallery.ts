@@ -1,7 +1,12 @@
 import { Component, ChangeDetectionStrategy, inject, signal, computed } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { SvgService } from '../../services/svg.service';
 import { SVG_GALLERY, SvgIconEntry } from '../../svg-icons/svg-gallery';
+
+interface GalleryEntry extends SvgIconEntry {
+  thumbnail: SafeHtml;
+}
 
 @Component({
   selector: 'app-svg-gallery',
@@ -30,7 +35,7 @@ import { SVG_GALLERY, SvgIconEntry } from '../../svg-icons/svg-gallery';
             role="listitem"
             [attr.aria-label]="'Select ' + icon.name + ' SVG'"
           >
-            <div class="icon-preview" [innerHTML]="icon.svg"></div>
+            <div class="icon-preview" [innerHTML]="icon.thumbnail"></div>
             <span class="icon-name">{{ icon.name }}</span>
           </button>
         }
@@ -44,9 +49,13 @@ import { SVG_GALLERY, SvgIconEntry } from '../../svg-icons/svg-gallery';
 })
 export class SvgGallery {
   private readonly svgService = inject(SvgService);
+  private readonly sanitizer = inject(DomSanitizer);
   protected readonly searchTerm = signal('');
 
-  private readonly allIcons = SVG_GALLERY;
+  private readonly allIcons: GalleryEntry[] = SVG_GALLERY.map((icon) => ({
+    ...icon,
+    thumbnail: this.sanitizer.bypassSecurityTrustHtml(this.resizeSvg(icon.svg)),
+  }));
 
   protected readonly filteredIcons = computed(() => {
     const term = this.searchTerm().toLowerCase().trim();
@@ -56,7 +65,13 @@ export class SvgGallery {
     );
   });
 
-  protected selectIcon(icon: SvgIconEntry): void {
+  private resizeSvg(svg: string): string {
+    return svg
+      .replace(/(<svg[^>]*)\swidth="[^"]*"/, '$1')
+      .replace(/(<svg[^>]*)\sheight="[^"]*"/, '$1');
+  }
+
+  protected selectIcon(icon: GalleryEntry): void {
     this.svgService.setSvgCode(icon.svg);
   }
 }

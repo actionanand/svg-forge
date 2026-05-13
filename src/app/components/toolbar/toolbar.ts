@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { SvgService } from '../../services/svg.service';
+import { SnackbarService } from '../../services/snackbar.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -30,16 +31,20 @@ import { SvgService } from '../../services/svg.service';
 })
 export class Toolbar {
   private readonly svgService = inject(SvgService);
+  private readonly snackbar = inject(SnackbarService);
 
   protected onDownloadSvg(): void {
     this.svgService.downloadSvg(this.svgService.svgCode());
+    this.snackbar.show('SVG downloaded');
   }
 
   protected async onDownloadPng(): Promise<void> {
     await this.svgService.downloadPng(this.svgService.svgCode());
+    this.snackbar.show('PNG downloaded');
   }
 
   protected onCopySvg(): void {
     this.svgService.copyToClipboard(this.svgService.svgCode());
+    this.snackbar.show('SVG code copied to clipboard');
   }
 }
