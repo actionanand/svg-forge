@@ -1,0 +1,132 @@
+<div class="android-vector-page">
+  <header class="page-toolbar">
+    <a class="brand-link" routerLink="/" aria-label="Open SVGForge editor">
+      <span class="brand-mark" aria-hidden="true">SF</span>
+      <span class="brand-name">SVGForge</span>
+    </a>
+    <nav class="page-nav" aria-label="Primary">
+      <a routerLink="/" class="nav-link">SVG Editor</a>
+      <a routerLink="/android-vector-drawable" class="nav-link active" aria-current="page">
+        Android Vector Drawable
+      </a>
+    </nav>
+  </header>
+
+  <main class="converter-shell">
+    <section class="intro-section" aria-labelledby="android-vector-title">
+      <div>
+        <p class="eyebrow">Android XML to SVG</p>
+        <h1 id="android-vector-title">Android Vector Drawable</h1>
+        <p class="intro-copy">
+          Paste or upload VectorDrawable XML to preview it and generate editable SVG markup.
+        </p>
+      </div>
+      <div class="intro-actions">
+        <button class="upload-btn" type="button" (click)="fileInput.click()">Upload XML</button>
+        <input
+          #fileInput
+          type="file"
+          accept=".xml,text/xml,application/xml"
+          class="visually-hidden"
+          aria-label="Upload Android vector XML file"
+          tabindex="-1"
+          (change)="onFileUpload($event)"
+        />
+        <button class="secondary-btn" type="button" (click)="clearXml()">Clear</button>
+      </div>
+    </section>
+
+    <section class="workspace-grid" aria-label="Android vector converter workspace">
+      <div class="panel editor-panel">
+        <div class="panel-header">
+          <div>
+            <h2>Android Vector XML</h2>
+            <p>{{ lineCount() }} lines - {{ charCount() }}B</p>
+          </div>
+        </div>
+        <textarea
+          class="xml-input"
+          [value]="xml()"
+          (input)="onXmlInput($event)"
+          spellcheck="false"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          aria-label="Android vector XML input"
+          placeholder="Paste Android VectorDrawable XML here..."
+        ></textarea>
+      </div>
+
+      <div class="panel preview-panel">
+        <div class="panel-header">
+          <div>
+            <h2>Preview</h2>
+            <p>Converted SVG render</p>
+          </div>
+        </div>
+        <div class="preview-stage">
+          @if (conversion().error) {
+            <p class="error-message" role="alert">{{ conversion().error }}</p>
+          } @else if (safeSvg()) {
+            <div class="svg-preview" [innerHTML]="safeSvg()"></div>
+          } @else {
+            <p class="empty-message">Paste or upload XML to preview the icon.</p>
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="output-section" aria-labelledby="converted-svg-title">
+      <div class="panel output-panel">
+        <div class="panel-header output-header">
+          <div>
+            <h2 id="converted-svg-title">Converted SVG</h2>
+            <p>Copy, download, or continue editing in SVGForge.</p>
+          </div>
+          <div class="button-row">
+            <button
+              class="secondary-btn"
+              type="button"
+              (click)="sendToSvgEditor()"
+              [disabled]="!svg()"
+            >
+              Send to Editor
+            </button>
+            <button class="secondary-btn" type="button" (click)="downloadSvg()" [disabled]="!svg()">
+              Download SVG
+            </button>
+            <button class="primary-btn" type="button" (click)="copySvg()" [disabled]="!svg()">
+              {{ copied() ? 'Copied' : 'Copy SVG' }}
+            </button>
+          </div>
+        </div>
+        <pre class="code-output"><code>{{ svg() || 'Converted SVG will appear here.' }}</code></pre>
+      </div>
+    </section>
+
+    <section class="reference-section" aria-labelledby="reference-icons-title">
+      <div class="section-heading">
+        <h2 id="reference-icons-title">Reference Icons</h2>
+        <p>Load a basic Android VectorDrawable sample to test the converter.</p>
+      </div>
+      <div class="example-grid">
+        @for (example of examples; track example.name) {
+          <button
+            class="example-card"
+            type="button"
+            (click)="useExample(example)"
+            [attr.aria-label]="'Load ' + example.name + ' Android vector example'"
+          >
+            @if (example.preview) {
+              <span class="example-preview" [innerHTML]="example.preview"></span>
+            }
+            <span class="example-name">{{ example.name }}</span>
+            <span class="example-description">{{ example.description }}</span>
+          </button>
+        }
+      </div>
+    </section>
+  </main>
+</div>
+
+<app-snackbar />
